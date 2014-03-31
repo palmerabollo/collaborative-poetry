@@ -1,0 +1,46 @@
+<head>
+  <title>Poema colaborativo</title>
+  <link href="http://fonts.googleapis.com/css?family=Special Elite" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+  {{> poetry}}
+  </div>
+</body>
+
+<template name="poetry">
+    <h1>Poema colaborativo</h1>
+    <h2>Un experimento social que ya tiene <strong>{{ counter.count }}</strong> colaboraciones</h2>
+    <h2>Añade tu verso anónimo y a ver cómo acaba</h2>
+
+    <span class="separator">&Dagger;</span>
+
+    {{#each verses}}
+        {{> verse}}
+    {{/each}}
+
+    <span class="verse input">
+        <form id="formverse">
+            <input type="text" name="verse" id="verse" size="60" maxlength="80" autofocus placeholder="escribe aquí tu nuevo verso">
+            <input type="hidden" name="antispam" id="antispam" value="">
+            <input type="submit" id="submit" value="Añadir">
+        </form>
+    </span>
+
+    <footer id="footer" class="hidden">
+        <form id="formsubscribe">
+            Gracias por participar. Suscríbete si quieres enterarte cuando acabe el experimento
+            <br>
+            <input type="email" name="email" id="email" size="50" maxlength="120" placeholder="escribe aquí tu correo electrónico">
+            <input type="submit" id="subscribe" value="Suscribirme">
+        </form>
+    </footer>
+</template>
+
+<template name="verse">
+    <span class="verse {{ style }}">
+        <span class="value">{{ value }}</span>
+        <span class="number">{{ number }}</span>
+    </span>
+</template>
