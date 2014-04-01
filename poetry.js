@@ -7,29 +7,9 @@ var LIMIT = 20;
 if (Meteor.isClient) {
     ["verses", "counts"].forEach(function (col) { Meteor.subscribe(col); });
 
-    Template.verse.style = function () {
-        var total = Session.get("total");
-        if (!total) {
-            var total = Counts.findOne();
-
-            // XXX fixes a buggy behaviour in Counts.findOne()
-            //     sometimes it returns undefined and I don't know why.
-            if (!total) {
-                return "young";
-            }
-
-            total = total.count;
-            Session.set("total", total);
-        }
-
-        if (total - this.number < LIMIT / 4) {
-            return "young";
-        } else if (total - this.number < LIMIT / 1.5) {
-            return "midage";
-        } else {
-            return "old";
-        }
-    }
+    Handlebars.registerHelper("pad", function(number) {
+        return ("000"+number).slice(-3);
+    });
 
     var counter = function () {
         return Counts.findOne();
@@ -60,7 +40,7 @@ if (Meteor.isClient) {
 
             if (confirm("Tu verso no se podrá borrar. ¿Estás seguro?")) {
                 var number = Counts.findOne().count + 1; // XXX race conditions
-                Verses.insert({number: number, value: verse, date: Date.now()})
+                Verses.insert({number: number, value: verse, date: Date.now(), spam: 0})
                 document.getElementById("verse").value = "";
                 document.getElementById("verse").disabled = true;
                 document.getElementById("submit").disabled = true;
@@ -81,6 +61,13 @@ if (Meteor.isClient) {
             Subscriptions.insert({email: email, date: Date.now()});
             alert('Te acabas de suscribir. Gracias.');
 
+            return false;
+        },
+        "click .spam": function () {
+            if (confirm("Vas a reportar un abuso. ¿Estás seguro de que es un verso inapropiado?")) {
+                Verses.update(this._id, { $inc: { spam: 1 } });
+                alert('Hecho. Gracias por colaborar');
+            }
             return false;
         }
     });

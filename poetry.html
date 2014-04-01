@@ -1,6 +1,9 @@
 <head>
   <title>Poema colaborativo</title>
   <link href="http://fonts.googleapis.com/css?family=Special Elite" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet" type="text/css">
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,7 +43,20 @@
 
 <template name="verse">
     <span class="verse {{ style }}">
+        <span class="report" id="{{ _id }}">
+            <a class="link spam" alt="marcar como inapropiado" title="marcar como inapropiado" href="#">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    {{#if spam}}
+                    <i class="fa fa-flag fa-stack-1x fa-inverse" style="color: #e62e2e"></i>
+                    {{else}}
+                    <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                    {{/if}}
+                </span>
+            </a>
+        </span>
+        <span class="number">{{ pad number }}</span>
         <span class="value">{{ value }}</span>
-        <span class="number">{{ number }}</span>
+        <!-- {{ spam }} -->
     </span>
 </template>
