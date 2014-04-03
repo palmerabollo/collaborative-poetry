@@ -4,6 +4,18 @@
   <link href="http://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet" type="text/css">
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <!-- AddThis Smart Layers BEGIN -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-533a6e3813245c97"></script>
+  <script type="text/javascript" defer>
+    addthis.layers({
+      'theme' : 'transparent',
+      'share' : {
+        'position' : 'left',
+        'numPreferredServices' : 5
+      }
+    });
+  </script>
 </head>
 
 <body>
@@ -33,10 +45,22 @@
 
     <footer id="footer" class="hidden">
         <form id="formsubscribe">
-            Gracias por participar. Suscríbete si quieres enterarte cuando acabe el experimento
+            Gracias por participar. No olvides compartirlo, y suscríbete si quieres enterarte cuando acabe el experimento.
             <br>
             <input type="email" name="email" id="email" size="50" maxlength="120" placeholder="escribe aquí tu correo electrónico">
             <input type="submit" id="subscribe" value="Suscribirme">
+            <br>
+            <br>
+            <aside>
+                <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_facebook"></a>
+                <a class="addthis_button_twitter"></a>
+                <a class="addthis_button_google_plusone_share"></a>
+                <a class="addthis_button_email"></a>
+                <a class="addthis_button_print"></a>
+                <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+            </aside>
         </form>
     </footer>
 </template>
@@ -44,19 +68,29 @@
 <template name="verse">
     <span class="verse {{ style }}">
         <span class="report" id="{{ _id }}">
+            <a class="link love" alt="marcar como favorito" title="marcar como favorito" href="#">
+                <span class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    {{#if love}}
+                    <i class="fa fa-thumbs-up fa-stack-1x fa-inverse" style="color: green"></i>
+                    {{else}}
+                    <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                    {{/if}}
+                </span>
+            </a>
             <a class="link spam" alt="marcar como inapropiado" title="marcar como inapropiado" href="#">
                 <span class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     {{#if spam}}
-                    <i class="fa fa-flag fa-stack-1x fa-inverse" style="color: #e62e2e"></i>
+                    <i class="fa fa-thumbs-down fa-stack-1x fa-inverse" style="color: #e62e2e"></i>
                     {{else}}
-                    <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
                     {{/if}}
                 </span>
             </a>
         </span>
         <span class="number">{{ pad number }}</span>
         <span class="value">{{ value }}</span>
-        <!-- {{ spam }} -->
+        <!-- {{ spam }} {{ love }} -->
     </span>
 </template>

@@ -42,8 +42,8 @@ if (Meteor.isClient) {
                 var number = Counts.findOne().count + 1; // XXX race conditions
                 Verses.insert({number: number, value: verse, date: Date.now(), spam: 0})
                 document.getElementById("verse").value = "";
-                document.getElementById("verse").disabled = true;
-                document.getElementById("submit").disabled = true;
+                // document.getElementById("verse").disabled = true;
+                // document.getElementById("submit").disabled = true;
 
                 document.getElementById("footer").className = ""; // unhide
                 document.getElementById("email").focus();
@@ -66,6 +66,13 @@ if (Meteor.isClient) {
         "click .spam": function () {
             if (confirm("Vas a reportar un abuso. ¿Estás seguro de que es un verso inapropiado?")) {
                 Verses.update(this._id, { $inc: { spam: 1 } });
+                alert('Hecho. Gracias por colaborar');
+            }
+            return false;
+        },
+        "click .love": function () {
+            if (confirm("Vas a marcar el verso como favorito. ¿Estás seguro?")) {
+                Verses.update(this._id, { $inc: { love: 1 } });
                 alert('Hecho. Gracias por colaborar');
             }
             return false;
@@ -121,7 +128,10 @@ if (Meteor.isServer) {
             Verses.insert({
                 number: i,
                 value: "Verso de cartón piedra para probar",
-                date: Date.now());
+                date: Date.now(),
+                spam: 0,
+                love: 0
+                );
         }*/
     });
 

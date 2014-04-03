@@ -4,6 +4,10 @@ body {
     font-family: 'Metrophobic', 'Verdana', 'Arial', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     font-size: 3em;
     text-align: right;
@@ -24,6 +28,10 @@ h2 {
     line-height: 1.3em;
     display: block;
     font-family: 'Special Elite', sans-serif;
+}
+
+.verse.input {
+    margin-top: 0.5em;
 }
 
 input {
