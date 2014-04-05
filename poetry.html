@@ -1,5 +1,5 @@
 <head>
-  <title>Poema colaborativo</title>
+  <title>Dame un verso. Un poema colaborativo</title>
   <link href="http://fonts.googleapis.com/css?family=Special Elite" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet" type="text/css">
 
@@ -25,9 +25,9 @@
 </body>
 
 <template name="poetry">
-    <h1>Poema colaborativo</h1>
+    <h1>Dame un verso</h1>
     <h2>Un experimento social que ya tiene <strong>{{ counter.count }}</strong> colaboraciones</h2>
-    <h2>Añade tu verso anónimo y a ver cómo acaba</h2>
+    <h2>Añade tu verso anónimo a la poesía y a ver cómo acaba</h2>
 
     <span class="separator">&Dagger;</span>
 
@@ -39,7 +39,7 @@
         <form id="formverse">
             <input type="text" name="verse" id="verse" size="60" maxlength="80" autofocus placeholder="escribe aquí tu nuevo verso">
             <input type="hidden" name="antispam" id="antispam" value="">
-            <input type="submit" id="submit" value="Añadir">
+            <input type="submit" id="submit" value="Añadir"> {{usercount}}
         </form>
     </span>
 
@@ -68,7 +68,7 @@
 <template name="verse">
     <span class="verse {{ style }}">
         <span class="report" id="{{ _id }}">
-            <a class="link love" alt="marcar como favorito" title="marcar como favorito" href="#">
+            <a class="link love {{love}}" alt="marcar como favorito" title="marcar como favorito" href="#">
                 <span class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     {{#if love}}
@@ -78,7 +78,7 @@
                     {{/if}}
                 </span>
             </a>
-            <a class="link spam" alt="marcar como inapropiado" title="marcar como inapropiado" href="#">
+            <a class="link spam {{spam}}" alt="marcar como inapropiado" title="marcar como inapropiado" href="#">
                 <span class="fa-stack">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     {{#if spam}}
@@ -91,6 +91,5 @@
         </span>
         <span class="number">{{ pad number }}</span>
         <span class="value">{{ value }}</span>
-        <!-- {{ spam }} {{ love }} -->
     </span>
 </template>

@@ -8,7 +8,7 @@ if (Meteor.isClient) {
     ["verses", "counts"].forEach(function (col) { Meteor.subscribe(col); });
 
     Handlebars.registerHelper("pad", function(number) {
-        return ("000"+number).slice(-3);
+        return ("000" + number).slice(-3);
     });
 
     var counter = function () {
@@ -79,7 +79,8 @@ if (Meteor.isClient) {
         }
     });
 
-    var FORBIDDEN_TOKENS = ["zx", "asd", "qwe", "http", "www", "<", ">", "{", "}", "script"];
+    // TODO use pattern to avoid invalid chars
+    var FORBIDDEN_TOKENS = ["#", "&", "%", "$", "@", "zx", "asd", "qwe", "http", "www", "<", ">", "{", "}", "script"];
 
     function validateVerse(verse) {
         if (verse.length < 4) {
@@ -99,6 +100,11 @@ if (Meteor.isClient) {
 
         var FOURCONSONANTS_PATTERN = /[b-df-hj-np-tv-z]{4}/igm;
         if (verse.match(FOURCONSONANTS_PATTERN)) {
+            return false;
+        }
+
+        var LONG_WORD_PATTERN = /\S{15,}/igm;
+        if (verse.match(LONG_WORD_PATTERN)) {
             return false;
         }
 
