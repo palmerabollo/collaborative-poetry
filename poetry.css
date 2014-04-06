@@ -1,7 +1,7 @@
 body {
     margin: 1em 6em;
     background: url('/image/light_grey.png');
-    font-family: 'Metrophobic', 'Verdana', 'Arial', sans-serif;
+    font-family: 'Love Ya Like A Sister', serif;
 }
 
 a {
@@ -9,17 +9,17 @@ a {
 }
 
 h1 {
-    font-size: 3em;
-    text-align: right;
-    margin:0;
+    font-size: 4em;
+    text-align: center;
+    margin: 0.2em;
 }
 
 h2 {
     font-size: 1.5em;
     font-weight: lighter;
-    text-align: right;
-    padding:0;
-    margin:0;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .verse {
@@ -27,7 +27,7 @@ h2 {
     font-size: 1.2em;
     line-height: 1.3em;
     display: block;
-    font-family: 'Special Elite', sans-serif;
+    font-family: 'Special Elite', serif;
 }
 
 .verse.input {
@@ -41,6 +41,16 @@ input {
 footer {
     margin-top: 4em;
     color: #555;
+}
+
+footer#credits {
+    text-align: right;
+    color: gray;
+}
+
+footer#credits a {
+    color: gray;
+    text-decoration: underline;
 }
 
 .number {
@@ -61,7 +71,7 @@ footer {
 }
 
 .report, .report a {
-    color: lightgray;
-    font-family: 'Metrophobic', 'Verdana', sans-serif;
+    color: #ddd;
+    vertical-align: middle;
     font-size: smaller;
 }

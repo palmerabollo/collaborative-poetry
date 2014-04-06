@@ -1,7 +1,10 @@
 <head>
   <title>Dame un verso. Un poema colaborativo</title>
-  <link href="http://fonts.googleapis.com/css?family=Special Elite" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet" type="text/css">
+  <meta name="author" content="Guido García">
+  <meta name="description" content="Dame un verso es un experimento social. Añade tu verso anónimo a la poesía.">
+
+  <link href="http://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet" type="text/css">
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -27,7 +30,7 @@
 <template name="poetry">
     <h1>Dame un verso</h1>
     <h2>Un experimento social que ya tiene <strong>{{ counter.count }}</strong> colaboraciones</h2>
-    <h2>Añade tu verso anónimo a la poesía y a ver cómo acaba</h2>
+    <h2>Añade tu verso anónimo a la poesía</h2>
 
     <span class="separator">&Dagger;</span>
 
@@ -39,7 +42,7 @@
         <form id="formverse">
             <input type="text" name="verse" id="verse" size="60" maxlength="80" autofocus placeholder="escribe aquí tu nuevo verso">
             <input type="hidden" name="antispam" id="antispam" value="">
-            <input type="submit" id="submit" value="Añadir"> {{usercount}}
+            <input type="submit" id="submit" value="Añadir">
         </form>
     </span>
 
@@ -62,6 +65,12 @@
                 </div>
             </aside>
         </form>
+    </footer>
+
+    <footer id="credits">
+        2014
+        · <a href="http://twitter.com/palmerabollo" alt="twitter palmerabollo">@palmerabollo</a>
+        · <a href="https://github.com/palmerabollo/collaborative-poetry" alt="source code">source code</a>
     </footer>
 </template>
 
